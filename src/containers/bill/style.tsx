@@ -11,7 +11,6 @@ export const StyledLayout = styled(Layout)`
 
 export const StyledWrapper = styled.div`
   border: 2px solid black;
-  border-radius: 10px;
 
   height: 100%;
   width: 600px;
@@ -23,8 +22,7 @@ export const StyledHeader = styled.div`
 `
 
 export const StyledEmptyBox = styled(Col)`
-  border-radius: 10px;
-  background-color: #3b92db;
+  background-color: #7aeeaa;
 `
 
 export const StyledSubHeader = styled.div`
@@ -33,7 +31,7 @@ export const StyledSubHeader = styled.div`
   align-items: center;
 
   height: 50px;
-  background-color: #3b92db;
+  background-color: #7aeeaa;
 `
 
 export { StyledHeader as StyledSubHeaderDetail }
