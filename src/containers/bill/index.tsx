@@ -21,9 +21,9 @@ const BillContainer = (): ReactElement => {
       key: 'name'
     },
     {
-        title: 'จำนวน',
-        dataIndex: 'total',
-        key: 'quantity'
+      title: 'จำนวน',
+      dataIndex: 'total',
+      key: 'quantity'
     }
   ]
 
@@ -74,8 +74,3 @@ const BillContainer = (): ReactElement => {
   )
 }
 export default BillContainer
-
-
-
-
-
