@@ -9,6 +9,7 @@ import {
   StyledWrapper,
   TitleNoMargin
 } from '@containers/bill/style'
+import { Text } from '@style/index'
 import { Col, Row, Table } from 'antd'
 import { ColumnsType } from 'antd/lib/table'
 import { ReactElement } from 'react'
@@ -16,9 +17,28 @@ import { ReactElement } from 'react'
 const BillContainer = (): ReactElement => {
   const columns: ColumnsType<Product> = [
     {
+      title: 'จำนวน',
+      dataIndex: 'quantity',
+      key: 'quantity',
+      width: 20,
+    },
+    {
       title: 'รายการ',
       dataIndex: 'name',
       key: 'name'
+    },
+    {
+      title: 'ราคาต่อหน่วย',
+      dataIndex: 'price',
+      key: 'price',
+      width: 100,
+    }, 
+    {
+      title: 'ราคาทั้งหมด',
+      width: 20,
+      render: (data) => {
+        return <Text>{data.quantity * data.price}</Text>
+      }
     }
   ]
 
@@ -63,7 +83,21 @@ const BillContainer = (): ReactElement => {
           </Row>
         </StyledSubHeaderDetail>
         {/* Content */}
-        <Table columns={columns} dataSource={dataProducts} pagination={false} />
+        <Table columns={columns} dataSource={dataProducts} pagination={false} summary={(data) => {
+          const total = data.reduce((prev,curr) => prev + curr.price, 0)
+          return (
+            <Table.Summary>
+              <Table.Summary.Row>
+                <Table.Summary.Cell index ={0} colSpan={3} align={'right'}>
+                  จำนวนเงิน
+                </Table.Summary.Cell>
+                <Table.Summary.Cell index ={1} align={'center'}>
+                  {total}
+                </Table.Summary.Cell>
+              </Table.Summary.Row>
+            </Table.Summary>
+          )
+        }} />
       </StyledWrapper>
     </StyledLayout>
   )
