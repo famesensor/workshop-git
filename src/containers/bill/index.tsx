@@ -9,8 +9,8 @@ import {
   StyledWrapper,
   TitleNoMargin
 } from '@containers/bill/style'
+import { Col, Input, Row, Table } from 'antd'
 import { Text } from '@style/index'
-import { Col, Row, Table } from 'antd'
 import { ColumnsType } from 'antd/lib/table'
 import { ReactElement } from 'react'
 
@@ -46,13 +46,11 @@ const BillContainer = (): ReactElement => {
         <StyledHeader>
           <Row gutter={[8, 8]}>
             <Col span={7}>
-              <TitleNoMargin level={5}>เล่มที่</TitleNoMargin>
-              <TitleNoMargin level={5}>Book no. ___________</TitleNoMargin>
+            <Input prefix="เล่มที่"/>
             </Col>
             <StyledEmptyBox flex={1} />
             <Col span={7}>
-              <TitleNoMargin level={5}>เลขที่</TitleNoMargin>
-              <TitleNoMargin level={5}>Bill no. ___________</TitleNoMargin>
+            <Input prefix="Bill no." />
             </Col>
           </Row>
         </StyledHeader>
@@ -62,25 +60,42 @@ const BillContainer = (): ReactElement => {
         <StyledSubHeaderDetail>
           <Row>
             <Col span={16}>
-              <TitleNoMargin level={5}>นาม</TitleNoMargin>
-              <TitleNoMargin level={5}>Name ________________________________________</TitleNoMargin>
+              <Input prefix="name" />
+
             </Col>
             <Col span={8}>
-              <TitleNoMargin level={5}>วันที่</TitleNoMargin>
-              <TitleNoMargin level={5}>Date _________________</TitleNoMargin>
+            <Input prefix="วันที่" />
             </Col>
             <Col span={16}>
-              <TitleNoMargin level={5}>ที่อยู่</TitleNoMargin>
-              <TitleNoMargin level={5}>Address ______________________________________</TitleNoMargin>
+            <Input prefix="ที่อยู่" />
             </Col>
             <Col span={8}>
-              <TitleNoMargin level={5}>เลขผู้เสียภาษี</TitleNoMargin>
-              <TitleNoMargin level={5}>TaxId _________________</TitleNoMargin>
+            <Input prefix="เลขผู้เสียภาษี" />
             </Col>
           </Row>
         </StyledSubHeaderDetail>
         {/* Content */}
-        <Table columns={columns} dataSource={dataProducts} pagination={false} />
+        <Table
+          columns={columns}
+          dataSource={dataProducts}
+          pagination={false}
+          summary={(data) => {
+            const total: number = data.reduce((prev, curr) => prev + curr.price, 0)
+
+            return (
+              <Table.Summary>
+                <Table.Summary.Row>
+                  <Table.Summary.Cell index={0} colSpan={3} align={'right'}>
+                    จำนวนเงิน
+                  </Table.Summary.Cell>
+                  <Table.Summary.Cell index={1} align={'center'}>
+                    {total}
+                  </Table.Summary.Cell>
+                </Table.Summary.Row>
+              </Table.Summary>
+            )
+          }}
+        />
       </StyledWrapper>
     </StyledLayout>
   )
