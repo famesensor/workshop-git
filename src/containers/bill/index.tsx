@@ -10,6 +10,7 @@ import {
   TitleNoMargin
 } from '@containers/bill/style'
 import { Col, Row, Table } from 'antd'
+import Input from 'antd/lib/input/Input'
 import { ColumnsType } from 'antd/lib/table'
 import { ReactElement } from 'react'
 
@@ -60,19 +61,28 @@ const BillContainer = (): ReactElement => {
           <Row>
             <Col span={16}>
               <TitleNoMargin level={5}>นาม</TitleNoMargin>
-              <TitleNoMargin level={5}>Name ________________________________________</TitleNoMargin>
+
+              <TitleNoMargin level={5}>
+                <Input placeholder={'Name____________________________'} />
+              </TitleNoMargin>
             </Col>
             <Col span={8}>
               <TitleNoMargin level={5}>วันที่</TitleNoMargin>
-              <TitleNoMargin level={5}>Date _________________</TitleNoMargin>
+              <TitleNoMargin level={5}>
+                <Input placeholder={'Date____________________________'} />
+              </TitleNoMargin>
             </Col>
             <Col span={16}>
               <TitleNoMargin level={5}>ที่อยู่</TitleNoMargin>
-              <TitleNoMargin level={5}>Address ______________________________________</TitleNoMargin>
+              <TitleNoMargin level={5}>
+                <Input placeholder={'Address____________________________'} />
+              </TitleNoMargin>
             </Col>
             <Col span={8}>
               <TitleNoMargin level={5}>เลขผู้เสียภาษี</TitleNoMargin>
-              <TitleNoMargin level={5}>TaxId _________________</TitleNoMargin>
+              <TitleNoMargin level={5}>
+                <Input placeholder={'Tax ID____________________________'} />
+              </TitleNoMargin>
             </Col>
           </Row>
         </StyledSubHeaderDetail>
