@@ -12,13 +12,34 @@ import {
 import { Col, Row, Table } from 'antd'
 import { ColumnsType } from 'antd/lib/table'
 import { ReactElement } from 'react'
+import { Text } from '@style/index'
 
 const BillContainer = (): ReactElement => {
   const columns: ColumnsType<Product> = [
     {
+      title: 'จำนวน',
+      dataIndex: 'quantity',
+      key: 'quantity',
+      width: 20
+    },
+    {
       title: 'รายการ',
       dataIndex: 'name',
       key: 'name'
+    },
+    {
+      title: 'หน่วยละ',
+      dataIndex: 'price',
+      key: 'price',
+      width: 100
+    },
+    {
+      title: 'จำนวนเงิน',
+      key: 'price',
+      width: 100,
+      render: (value: Product) => {
+        return <Text>{value.price * value.quantity}</Text>
+      }
     }
   ]
 
