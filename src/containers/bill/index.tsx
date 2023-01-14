@@ -16,10 +16,30 @@ import { ReactElement } from 'react'
 const BillContainer = (): ReactElement => {
   const columns: ColumnsType<Product> = [
     {
+      title: 'จำนวน',
+      dataIndex: 'quantity',
+      key: 'quantity',
+      width: 20
+    },
+    {
       title: 'รายการ',
       dataIndex: 'name',
       key: 'name'
-    }
+    },
+    {
+      title: 'หน่วยละ',
+      dataIndex: 'price',
+      key: 'price',
+      width: 100
+    },
+    {
+      title: 'จำนวนเงิน',
+      key: 'price',
+      width: 100,
+      render: (value: Product) => {
+        return <Text>{value={.price * value.quantity}</Text>
+      }
+    },
   ]
 
   return (
