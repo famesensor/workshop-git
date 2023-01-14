@@ -16,8 +16,23 @@ import { ReactElement } from 'react'
 const BillContainer = (): ReactElement => {
   const columns: ColumnsType<Product> = [
     {
+      title: 'จำนวน',
+      dataIndex: 'quantity',
+      key: 'name'
+    },
+    {
       title: 'รายการ',
       dataIndex: 'name',
+      key: 'name'
+    },
+    {
+      title: 'หน่วยละ',
+      dataIndex: 'price',
+      key: 'name'
+    },
+    {
+      title: 'จำนวนเงิน',
+      dataIndex: 'price',
       key: 'name'
     }
   ]
@@ -63,7 +78,26 @@ const BillContainer = (): ReactElement => {
           </Row>
         </StyledSubHeaderDetail>
         {/* Content */}
-        <Table columns={columns} dataSource={dataProducts} pagination={false} />
+        <Table
+          columns={columns}
+          dataSource={dataProducts}
+          pagination={false}
+          summary={(data) => {
+            const total = data.reduce((prev, curr) => prev + curr.price, 0)
+            return (
+              <Table.Summary>
+                <Table.Summary.Row>
+                  <Table.Summary.Cell index={0} colSpan={3} align={'right'}>
+                    จำนวนเงิน
+                  </Table.Summary.Cell>
+                  <Table.Summary.Cell index={1} align={'center'}>
+                    {total}
+                  </Table.Summary.Cell>
+                </Table.Summary.Row>
+              </Table.Summary>
+            )
+          }}
+        />
       </StyledWrapper>
     </StyledLayout>
   )
