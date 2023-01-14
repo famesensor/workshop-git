@@ -1,5 +1,5 @@
 export interface Product {
-  Number: number
+  number: number
   name: string
   // TODO: add field -> price, quantity
   price: number
