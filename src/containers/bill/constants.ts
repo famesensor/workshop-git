@@ -5,8 +5,7 @@ export const dataProducts: Product[] = [
     Number : 1,
     name: 'โค้ก 1.25L',
     quantity : 1,
-    price : 340
-    
+    price : 340,
   },
   {
     Number : 2,

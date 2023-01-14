@@ -9,6 +9,7 @@ import {
   StyledWrapper,
   TitleNoMargin
 } from '@containers/bill/style'
+import { Text } from '@style/index'
 import { Col, Row, Table } from 'antd'
 import { ColumnsType } from 'antd/lib/table'
 import { ReactElement } from 'react'
@@ -32,8 +33,9 @@ const BillContainer = (): ReactElement => {
     },
     {
       title: 'จำนวนเงิน',
-      dataIndex: 'price',
-      key: 'name'
+      key: 'name',render:(data)=> {
+        return <Text>{data.price * data.quantity}</Text>
+      }
     }
   ]
 
